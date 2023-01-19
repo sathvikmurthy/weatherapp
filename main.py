@@ -14,7 +14,7 @@ search_button=Button(window,text='SEARCH WEATHER',width=10,bg="brown",fg="black"
 Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=5,column=0)
 
 location=Label(window,text='Bangalore',font=("\nComic Sans MS",30,"bold"),bg="brown").grid(row=6,column=0)
-Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=7,column=0)
+Label(window, text="rajesha",bg="black",fg="white",font="none 15 bold" ).grid(row=7,column=0)
 
 temperature=Label(window,text='20 C',font=("\nComic Sans MS",30,"bold"),bg="brown").grid(row=10,column=0)
 Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=9,column=0)
