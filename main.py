@@ -1,5 +1,4 @@
 import requests
-import json
 from tkinter import *
 window=Tk()
 window.title("Weather app")
@@ -9,10 +8,10 @@ window.geometry("260x580")
 city = StringVar()
 api_city = ""
 country = StringVar()
-temp = float()
+temp = StringVar()
 temp_con = StringVar()
 weather_data = {}
-place = city.get() + ", " + country.get()
+place = StringVar()
 
 
 def get_current_loc():
@@ -23,7 +22,10 @@ def get_current_loc():
     weather_data = resp.json()
     city.set(weather_data['name'])
     country.set(weather_data['sys']['country'])
-    temp = weather_data['main']['temp']
+    s = weather_data['name'] + ", " + weather_data['sys']['country']
+    place.set(s)
+    r = str(round(weather_data['main']['temp'])) + "°C"
+    temp.set(r)
     temp_con.set(weather_data['weather'][0]['main'])
     
     
@@ -44,7 +46,7 @@ search_button=Button(window,text='SEARCH WEATHER',width=10,bg="brown",fg="black"
 Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=5,column=0)
 
 location=Label(window,textvariable=place,font=("\nComic Sans MS",30,"bold"),bg="brown").grid(row=6,column=0)
-Label(window, text="rajesha",bg="black",fg="white",font="none 15 bold" ).grid(row=7,column=0)
+Label(window, text="",bg="black",fg="white",font="none 15 bold" ).grid(row=7,column=0)
 
 temperature=Label(window,textvariable=temp,font=("\nComic Sans MS",30,"bold"),bg="brown").grid(row=10,column=0)
 Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=9,column=0)
