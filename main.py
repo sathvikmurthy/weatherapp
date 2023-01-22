@@ -6,6 +6,7 @@ window.config(background="black")
 window.geometry("260x580")
 
 city = StringVar()
+
 api_city = ""
 country = StringVar()
 temp = StringVar()
@@ -27,10 +28,20 @@ def get_current_loc():
     r = str(round(weather_data['main']['temp'])) + "°C"
     temp.set(r)
     temp_con.set(weather_data['weather'][0]['main'])
-    
-    
+       
 get_current_loc()
 
+def get_weather_search():
+    enter_city=Entry(window,textvariable=city,fg="black",font=("Comic Sans MS",30))
+    enter_city.pack()
+    search_button=Button(window,text='SEARCH WEATHER!',width=20,bg="white",fg="black",font=("Comic Sans MS",25))
+    search_button.pack()
+    location_entry=Label(window,text='',font=("Comic Sans MS",35,"bold"),bg="white")
+    location_entry.pack()
+    temperature_entry=Label(window,text='',font=("Comic Sans MS",35,"bold"),bg="white")
+    temperature_entry.pack()
+    weather_entry=Label(window,text='',font=("Comic Sans MS",35,"bold"),bg="white")
+    weather_entry.pack()
 
     
     
