@@ -32,17 +32,15 @@ def get_current_loc():
 get_current_loc()
 
 def get_weather_search():
-    enter_city=Entry(window,textvariable=city,fg="black",font=("Comic Sans MS",30))
-    enter_city.pack()
-    search_button=Button(window,text='SEARCH WEATHER!',width=20,bg="white",fg="black",font=("Comic Sans MS",25))
-    search_button.pack()
-    location_entry=Label(window,text='',font=("Comic Sans MS",35,"bold"),bg="white")
-    location_entry.pack()
-    temperature_entry=Label(window,text='',font=("Comic Sans MS",35,"bold"),bg="white")
-    temperature_entry.pack()
-    weather_entry=Label(window,text='',font=("Comic Sans MS",35,"bold"),bg="white")
-    weather_entry.pack()
-
+    response = requests.get("https://ipinfo.io")
+    api_city = search_city.get()
+    city.set(weather_data['name'])
+    country.set(weather_data['sys']['country'])
+    s = weather_data['name'] + ", " + weather_data['sys']['country']
+    place.set(s)
+    r = str(round(weather_data['main']['temp'])) + "°C"
+    temp.set(r)
+    temp_con.set(weather_data['weather'][0]['main'])
     
     
     
@@ -53,7 +51,7 @@ Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=1,co
 enter_city=Entry(window, textvariable=search_city,bg="white",fg="black",font=("Comic Sans MS",16,"bold")).grid(row=2,column=0)
 Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=3,column=0)
 
-search_button=Button(window,text='SEARCH WEATHER',width=10,bg="brown",fg="black",font=("none",10,"bold")).grid(row=2,column=2)
+search_button=Button(window,text='SEARCH WEATHER',command=get_weather_search(),width=10,bg="brown",fg="black",font=("none",10,"bold")).grid(row=2,column=2)
 Label(window, text=" ",bg="black",fg="white",font="none 15 bold" ).grid(row=5,column=0)
 
 location=Label(window,textvariable=place,font=("\nComic Sans MS",30,"bold"),bg="brown").grid(row=6,column=0)
