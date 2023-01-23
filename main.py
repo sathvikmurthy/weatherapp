@@ -3,7 +3,7 @@ from tkinter import *
 window=Tk()
 window.title("Weather App ")
 window.config(background="light blue")
-window.geometry("700x580")
+window.geometry("300x580")
 
 city = StringVar()
 api_city = ""
@@ -22,7 +22,7 @@ def get_current_loc():
     weather_data = resp.json()
     city.set(weather_data['name'])
     country.set(weather_data['sys']['country'])
-    s = weather_data['name'] + ", " + weather_data['sys']['country']
+    s = weather_data['name'] + "," + weather_data['sys']['country']
     place.set(s)
     r = str(round(weather_data['main']['temp'])) + "°C"
     temp.set(r)
@@ -44,16 +44,14 @@ def get_weather_search():
     temp.set(r)
     temp_con.set(weather_data['weather'][0]['main'])
     
-    
-    
 
 search_city=StringVar()
-Label(window,text="WEATHER APP",bg="white",fg="black",font="Verdana 30 bold").grid(row=0,column=0)
+Label(window,text="WEATHER 24",bg="light blue",fg="black",font="Verdana 30 bold").grid(row=0,column=0)
 Label(window, text=" ",bg="light blue",fg="black",font="none 15 bold" ).grid(row=1,column=0)
 enter_city=Entry(window, textvariable=search_city,bg="white",fg="black",font=("Comic Sans MS",16,"bold")).grid(row=2,column=0)
 Label(window, text=" ",bg="light blue",fg="black",font="none 15 bold" ).grid(row=3,column=0)
 
-search_button=Button(window,text='SEARCH WEATHER',command=get_weather_search,width=0,bg="red",fg="black",font=("none",10,"bold")).grid(row=2,column=2)
+search_button=Button(window,text='SEARCH WEATHER',command=get_weather_search,width=0,bg="red",fg="black",font=("none",10,"bold")).grid(row=4,column=0)
 Label(window, text=" ",bg="light blue",fg="white",font="none 15 bold" ).grid(row=5,column=0)
 
 location=Label(window,textvariable=place,font=("\nComic Sans MS",30,"bold"),bg="light blue").grid(row=6,column=0)
